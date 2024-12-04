@@ -103,7 +103,7 @@ const AdminPage = () => {
             className="create-button"
             onClick={() => navigate("/create-account")}
           >
-            Tạo tài khoản
+            Tạo mới tài khoản
           </button>
         </div>
         <EnhancedTable

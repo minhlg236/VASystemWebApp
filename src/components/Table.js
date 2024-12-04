@@ -54,11 +54,11 @@ function EnhancedTableHead(props) {
   };
 
   const columns = [
-    { id: "username", label: "Username" },
+    { id: "username", label: "Tên đăng nhập" },
     { id: "email", label: "Email" },
-    { id: "phone", label: "Phone" },
-    { id: "role", label: "Role" },
-    { id: "status", label: "Status" },
+    { id: "phone", label: "Số điện thoại" },
+    { id: "role", label: "Vai Trò" },
+    { id: "status", label: "Trạng thái" },
   ];
 
   return (
@@ -91,7 +91,7 @@ function EnhancedTableHead(props) {
             </span>
           </TableCell>
         ))}
-        <TableCell align="right">Actions</TableCell>
+        <TableCell align="right">Tác vụ</TableCell>
       </TableRow>
     </TableHead>
   );

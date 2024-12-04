@@ -5,7 +5,7 @@ import SearchBar from "../components/SearchBar";
 import DishTable from "../components/DishTable"; // Replace EnhancedTable with DishTable
 import axios from "axios";
 
-const itemsPerPage = 100;
+const itemsPerPage = 5;
 
 const DishesManagement = () => {
   const navigate = useNavigate();
@@ -109,7 +109,7 @@ const DishesManagement = () => {
             className="create-button"
             onClick={() => navigate("/create-dish")}
           >
-            Tạo món ăn
+            Create
           </button>
         </div>
         {isLoading ? (
@@ -158,7 +158,7 @@ const Sidebar = () => {
       </div>
       <div
         className="sidebar-item"
-        onClick={() => navigate("/ingredient-management")}
+        onClick={() => navigate("/Ingredient-management")}
       >
         Quản lí nguyên liệu
       </div>

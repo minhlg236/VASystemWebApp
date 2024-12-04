@@ -45,10 +45,14 @@ function EnhancedTableHead(props) {
   };
 
   const columns = [
-    { id: "articleId", label: "ID Bài Viết" },
-    { id: "title", label: "Tiêu Đề" },
-    { id: "authorName", label: "Tác Giả" },
-    { id: "status", label: "Trạng Thái" },
+    { id: "ingredientId", label: "ID Nguyên Liệu" },
+    { id: "name", label: "Tên Nguyên Liệu" },
+    { id: "weight", label: "Khối lương (g)" },
+    { id: "calories", label: "Calories" },
+    { id: "protein", label: "Protein (g)" },
+    { id: "carbs", label: "Carbs (g)" },
+    { id: "fat", label: "Chất béo (g)" },
+    { id: "sodium", label: "Sodium (mg)" },
   ];
 
   return (
@@ -73,7 +77,7 @@ function EnhancedTableHead(props) {
             </span>
           </TableCell>
         ))}
-        <TableCell align="right">Tác vụ</TableCell>
+        <TableCell align="right">Actions</TableCell>
       </TableRow>
     </TableHead>
   );
@@ -85,9 +89,9 @@ EnhancedTableHead.propTypes = {
   orderBy: PropTypes.string.isRequired,
 };
 
-export default function EnhancedTable({ rows }) {
+export default function IngredientTable({ rows }) {
   const [order, setOrder] = useState("asc");
-  const [orderBy, setOrderBy] = useState("articleId");
+  const [orderBy, setOrderBy] = useState("ingredientId");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const navigate = useNavigate();
@@ -124,34 +128,19 @@ export default function EnhancedTable({ rows }) {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => (
-                  <TableRow hover key={row.articleId}>
-                    <TableCell>{row.articleId}</TableCell>
-                    <TableCell>
-                      <span
-                        style={{
-                          display: "block",
-                          width: "200px",
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                        }}
-                        title={row.title}
-                      >
-                        {row.title}
-                      </span>
-                    </TableCell>
-                    <TableCell>{row.authorName}</TableCell>
-                    <TableCell>
-                      {row.status === "pending"
-                        ? "Pending"
-                        : row.status === "accepted"
-                        ? "Accepted"
-                        : "Unaccepted"}
-                    </TableCell>
+                  <TableRow hover key={row.ingredientId}>
+                    <TableCell>{row.ingredientId}</TableCell>
+                    <TableCell>{row.name}</TableCell>
+                    <TableCell>{row.weight}</TableCell>
+                    <TableCell>{row.calories}</TableCell>
+                    <TableCell>{row.protein}</TableCell>
+                    <TableCell>{row.carbs}</TableCell>
+                    <TableCell>{row.fat}</TableCell>
+                    <TableCell>{row.sodium}</TableCell>
                     <TableCell align="right">
                       <IconButton
                         onClick={() =>
-                          navigate(`/article-detail/${row.articleId}`)
+                          navigate(`/ingredient-detail/${row.ingredientId}`)
                         }
                         color="primary"
                       >

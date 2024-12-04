@@ -80,7 +80,7 @@ const ArticlesManagement = () => {
             className="create-button"
             onClick={() => navigate("/create-article")}
           >
-            Tạo bài viết mới
+            Create
           </button>
         </div>
         <EnhancedTable

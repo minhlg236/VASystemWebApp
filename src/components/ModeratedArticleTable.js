@@ -45,10 +45,10 @@ function EnhancedTableHead(props) {
   };
 
   const columns = [
-    { id: "articleId", label: "Article ID" },
-    { id: "title", label: "Title" },
-    { id: "authorName", label: "Author" },
-    { id: "status", label: "Status" },
+    { id: "articleId", label: "ID ID Bài Viết" },
+    { id: "title", label: "Tiêu Đề" },
+    { id: "authorName", label: "Tác Giả" },
+    { id: "status", label: "Trạng Thái" },
     // { id: "moderateDate", label: "Moderate Date" },
   ];
 
@@ -74,7 +74,7 @@ function EnhancedTableHead(props) {
             </span>
           </TableCell>
         ))}
-        <TableCell align="right">Actions</TableCell>
+        <TableCell align="right">Tác vụ</TableCell>
       </TableRow>
     </TableHead>
   );
@@ -143,7 +143,7 @@ export default function EnhancedTable({ rows }) {
                     </TableCell>
                     <TableCell>{row.authorName}</TableCell>
                     <TableCell>
-                      {row.status === "accepted" ? "Accepted" : "Unaccepted"}
+                      {row.status === "accepted" ? "Accepted" : "Rejected"}
                     </TableCell>
                     {/* <TableCell>{row.moderateDate || "N/A"}</TableCell> */}
                     <TableCell align="right">
