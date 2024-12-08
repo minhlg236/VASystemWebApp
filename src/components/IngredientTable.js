@@ -45,13 +45,13 @@ function EnhancedTableHead(props) {
   };
 
   const columns = [
-    { id: "ingredientId", label: "ID Nguyên Liệu" },
-    { id: "name", label: "Tên Nguyên Liệu" },
-    { id: "weight", label: "Khối lương (g)" },
+    { id: "ingredientId", label: "Ingredient ID" },
+    { id: "name", label: "Name" },
+    { id: "weight", label: "Weight (g)" },
     { id: "calories", label: "Calories" },
     { id: "protein", label: "Protein (g)" },
     { id: "carbs", label: "Carbs (g)" },
-    { id: "fat", label: "Chất béo (g)" },
+    { id: "fat", label: "Fat (g)" },
     { id: "sodium", label: "Sodium (mg)" },
   ];
 

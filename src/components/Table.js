@@ -16,7 +16,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import VisibilityIcon from "@mui/icons-material/Visibility"; // Import VisibilityIcon
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) return -1;
   if (b[orderBy] > a[orderBy]) return 1;
@@ -54,11 +54,11 @@ function EnhancedTableHead(props) {
   };
 
   const columns = [
-    { id: "username", label: "Tên đăng nhập" },
+    { id: "username", label: "Username" },
     { id: "email", label: "Email" },
-    { id: "phone", label: "Số điện thoại" },
-    { id: "role", label: "Vai Trò" },
-    { id: "status", label: "Trạng thái" },
+    { id: "phone", label: "Phone" },
+    { id: "role", label: "Role" },
+    { id: "status", label: "Status" },
   ];
 
   return (
@@ -91,7 +91,7 @@ function EnhancedTableHead(props) {
             </span>
           </TableCell>
         ))}
-        <TableCell align="right">Tác vụ</TableCell>
+        <TableCell align="right">Actions</TableCell>
       </TableRow>
     </TableHead>
   );
@@ -106,7 +106,7 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
-export default function EnhancedTable({ rows, handleDeleteClick }) {
+export default function EnhancedTable({ rows }) {
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("username");
   const [selected, setSelected] = useState([]);
@@ -128,6 +128,48 @@ export default function EnhancedTable({ rows, handleDeleteClick }) {
         return "Nutritionist";
       default:
         return "Unknown";
+    }
+  };
+
+  const handleDelete = async (userId) => {
+    try {
+      const token = localStorage.getItem("authToken");
+      const user = rows.find((row) => row.userId === userId);
+
+      if (!user) {
+        alert("User not found.");
+        return;
+      }
+
+      const payload = {
+        userId: user.userId,
+        username: user.username,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        roleId: user.roleId,
+        status: "inactive",
+        password: user.password || "", // Add this field to satisfy validation
+      };
+
+      await axios.put(
+        "https://vegetariansassistant-behjaxfhfkeqhbhk.southeastasia-01.azurewebsites.net/api/v1/users/updateStaff",
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      alert("User status updated to inactive.");
+    } catch (error) {
+      console.error("Error updating user status:", error);
+      if (error.response && error.response.data) {
+        alert(`Server error: ${JSON.stringify(error.response.data)}`);
+      } else {
+        alert("An error occurred. Please try again.");
+      }
     }
   };
 
@@ -227,10 +269,11 @@ export default function EnhancedTable({ rows, handleDeleteClick }) {
                       <TableCell>{row.status}</TableCell>
                       <TableCell align="right">
                         <IconButton
-                          onClick={() => handleDeleteClick(row.userId)}
+                          onClick={() => handleDelete(row.userId, row.status)}
                         >
                           <DeleteIcon />
                         </IconButton>
+
                         <IconButton
                           onClick={() => navigate(`/user/${row.userId}`)}
                           color="primary"

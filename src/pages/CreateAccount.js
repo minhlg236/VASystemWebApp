@@ -63,7 +63,6 @@ const CreateAccount = () => {
   return (
     <div className="create-account-container">
       <h2>Tạo tài khoản mới</h2>
-      <br></br> <h3>-Dành cho Hệ thống-</h3>
       {/* <button
         type="button"
         className="home-button"
@@ -73,7 +72,7 @@ const CreateAccount = () => {
       </button> */}
       <form onSubmit={handleCreateAccount}>
         <div className="input-group">
-          <label htmlFor="username">Tên đăng nhập (*)</label>
+          <label htmlFor="username">Tên đăng nhập</label>
           <input
             type="text"
             id="username"
@@ -84,7 +83,7 @@ const CreateAccount = () => {
           />
         </div>
         <div className="input-group">
-          <label htmlFor="password">Mật khẩu (*)</label>
+          <label htmlFor="password">Mật khẩu</label>
           <input
             type="password"
             id="password"
@@ -107,7 +106,7 @@ const CreateAccount = () => {
           </select>
         </div>
         <div className="input-group">
-          <label htmlFor="phone">Số điện thoại (*)</label>
+          <label htmlFor="phone">Số điện thoại</label>
           <input
             type="text"
             id="phone"
@@ -124,9 +123,9 @@ const CreateAccount = () => {
             value={role}
             onChange={(e) => setRole(e.target.value)}
           >
-            <option value="Staff">Nhân viên quản lí đơn hàng</option>
-            <option value="Moderator">Kiểm duyệt viên</option>
-            <option value="Nutritionist">Chuyên gia dinh dưỡng</option>
+            <option value="Staff">Staff</option>
+            <option value="Moderator">Moderator</option>
+            <option value="Nutritionist">Nutritionist</option>
           </select>
         </div>
         <div className="create-button2">

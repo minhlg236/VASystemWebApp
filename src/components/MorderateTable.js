@@ -45,10 +45,10 @@ function EnhancedTableHead(props) {
   };
 
   const columns = [
-    { id: "articleId", label: "ID Bài Viết" },
-    { id: "title", label: "Tiêu Đề" },
-    { id: "authorName", label: "Tác Giả" },
-    { id: "status", label: "Trạng Thái" },
+    { id: "articleId", label: "Article ID" },
+    { id: "title", label: "Title" },
+    { id: "authorName", label: "Author" },
+    { id: "status", label: "Status" },
   ];
 
   return (
@@ -73,7 +73,7 @@ function EnhancedTableHead(props) {
             </span>
           </TableCell>
         ))}
-        <TableCell align="right">Tác vụ</TableCell>
+        <TableCell align="right">Actions</TableCell>
       </TableRow>
     </TableHead>
   );

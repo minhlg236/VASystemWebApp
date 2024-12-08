@@ -45,12 +45,12 @@ function EnhancedTableHead(props) {
   };
 
   const columns = [
-    { id: "articleId", label: "ID Bài Viết" },
-    { id: "title", label: "Tiêu Đề" },
-    { id: "content", label: "Nội Dung" }, 
-    { id: "authorName", label: "Tác Giả" },
-    { id: "imageUrl", label: "Hình Ảnh" }, 
-    { id: "status", label: "Trạng Thái" },
+    { id: "articleId", label: "Article ID" },
+    { id: "title", label: "Title" },
+    { id: "content", label: "Content" }, // Thêm cột Content
+    { id: "authorName", label: "Author" },
+    { id: "imageUrl", label: "Image" }, // Thêm cột Image
+    { id: "status", label: "Status" },
   ];
 
   return (
@@ -75,7 +75,7 @@ function EnhancedTableHead(props) {
             </span>
           </TableCell>
         ))}
-        <TableCell align="right">Tác vụ</TableCell>
+        <TableCell align="right">Actions</TableCell>
       </TableRow>
     </TableHead>
   );

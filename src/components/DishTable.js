@@ -52,12 +52,12 @@ function DishTableHead({
   };
 
   const columns = [
-    { id: "dishId", label: "ID Món Ăn" },
-    { id: "name", label: "Tên Món Ăn" },
-    { id: "dishType", label: "Loại" },
-    { id: "price", label: "Giá" },
-    { id: "preferenceName", label: "Kiểu Ăn Chay" },
-    { id: "status", label: "Trạng Thái" },
+    { id: "dishId", label: "Dish ID" },
+    { id: "name", label: "Name" },
+    { id: "dishType", label: "Type" },
+    { id: "price", label: "Price" },
+    { id: "preferenceName", label: "Preference" },
+    { id: "status", label: "Status" },
   ];
 
   return (
@@ -90,7 +90,7 @@ function DishTableHead({
             </span>
           </TableCell>
         ))}
-        <TableCell align="right">Tác vụ</TableCell>
+        <TableCell align="right">Actions</TableCell>
       </TableRow>
     </TableHead>
   );
